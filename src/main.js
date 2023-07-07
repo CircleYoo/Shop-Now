@@ -1,28 +1,57 @@
 (function () {
   'use strict';
   
-  const itemWrapper = document.querySelector(".items")
-  let itemData;
-  fetch('./data/item.json')
-  .then(res => res.json())
-  .then(result => {
-    itemData = result;
-    makeItem(itemData);
-  })
-    .catch(err => console.log("item error", err))
+  // Fetch the items from the JSON file
+  function loadItems() {
+    return fetch('./data/item.json')
+      .then(res => res.json())
+      .then(result => result.items)
+  }
   
-  function makeItem(data) {
-    let html = ``;
-    data.forEach(obj => {
-      let temp = `
+  // update the list with the given items
+  function makeItem(items) {
+    const itemWrapper = document.querySelector(".items");
+    itemWrapper.innerHTML = items.map(item => createHTMLString(item)).join('');
+  }
+  
+  // Create HTML list item from the given data item
+  function createHTMLString(obj) {
+    return `
         <li class="item">
-          <img src="${obj.img}" alt="tshirt" class="item_thumbnail">
-          <span class="item_desc">male, large</span>
+          <img src="${obj.image}" alt="${obj.type}" class="item_thumbnail">
+          <span class="item_desc">${obj.gender}, ${obj.size}</span>
         </li>
-      `
-      html += temp;
-    })
-    itemWrapper.innerHTML = html;
+    `
   }
 
+  function onButtonClick(event, items) {
+    const dataSet = event.target.dataset;
+    const key = dataSet.key
+    const value = event.target.dataset.value;
+
+    if (key == null || value == null) {
+      return;
+    } 
+
+    const filtered = items.filter(item => item[key] === value)
+    console.log(filtered)
+    makeItem(filtered);
+
+    console.log(dataSet, key, value)
+  }
+  // filtering items
+  function setEventListner(items) {
+    const logo = document.querySelector('.logo');
+    const buttons = document.querySelector('.buttons');
+    logo.addEventListener('click', () => makeItem(items))
+    buttons.addEventListener('click', event => onButtonClick(event, items))
+  }
+  // main
+  loadItems()
+    .then(items => {
+      makeItem(items)
+      setEventListner(items);
+    })
+    .catch(console.log);
+  
 })();
