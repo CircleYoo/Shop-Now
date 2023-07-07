@@ -33,19 +33,7 @@
     if (key == null || value == null) {
       return;
     } 
-    updateItems(items, key, value);
-  }
-  
-  // Make the items matching {key, value} invisible.
-  function updateItems(items, key, value) {
-    items.forEach(item => {
-      console.log(item, key, value)
-      if (item.dataset[key] === value) {
-        item.classList.remove('invisible');
-      } else {
-        item.classList.add('invisible');
-      }
-    })
+    makeItem(items.filter(item => item[key] === value))
   }
 
   // filtering items
