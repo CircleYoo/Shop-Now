@@ -38,9 +38,9 @@
 
   // filtering items
   function setEventListner(items) {
-    const logo = document.querySelector('.logo');
+    const all = document.querySelector('.all');
     const buttons = document.querySelector('.buttons');
-    logo.addEventListener('click', () => makeItem(items))
+    all.addEventListener('click', () => makeItem(items))
     buttons.addEventListener('click', event => onButtonClick(event, items))
   }
   // main

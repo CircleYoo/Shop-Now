@@ -1,6 +1,7 @@
 :root {
   /* color */
   --color-black: #3f454d;
+  --color-beige: #F3F4F1;
   --color-white: #ffffff;
   --color-blue: #3b88c3;
   --color-yellow: #fbbe28;
@@ -19,7 +20,7 @@
 }
 
 body {
-  background-color: var(--color-black);
+  background-color: var(--color-beige);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,6 +39,7 @@ button {
 
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 ul,li {
