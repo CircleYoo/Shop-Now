@@ -3,9 +3,9 @@
   --color-black: #3f454d;
   --color-beige: #F3F4F1;
   --color-white: #ffffff;
-  --color-blue: #3b88c3;
-  --color-yellow: #fbbe28;
-  --color-pink: #fd7f84;
+  --color-blue: #0055FF;
+  --color-yellow: #FFB000;
+  --color-pink: #FF004F;
   --color-light-grey: #dfdfdf;
 
   /* size */
@@ -51,13 +51,13 @@ ul,li {
 .logo {
   cursor: pointer;
   transition: transform var(--animation-duration) ease;
+  width: 8rem;
 }
 
 .btn {
   margin-right: var(--base-space);
 }
-.btn:hover,
-.logo:hover {
+.btn:hover {
   transform: scale(1.1);
 }
 
@@ -94,6 +94,7 @@ ul,li {
 }
 .item {
   background-color: var(--color-white);
+  border-radius: calc(var(--size-border) * 2);
   display: flex;
   align-items: center;
   padding: var(--base-space);
