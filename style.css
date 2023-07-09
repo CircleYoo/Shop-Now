@@ -1,22 +1,25 @@
 :root {
   /* color */
   --color-black: #3f454d;
-  --color-beige: #F3F4F1;
+  --color-beige: #f3f4f1;
   --color-white: #ffffff;
-  --color-blue: #0055FF;
-  --color-yellow: #FFB000;
-  --color-pink: #FF004F;
-  --color-light-grey: #dfdfdf;
+  --color-blue: #0055ff;
+  --color-yellow: #ffb000;
+  --color-pink: #ff004f;
+  --color-light-grey: #b4b3bb;
 
   /* size */
   --base-space: 0.5rem;
-  --size-button: 4rem;
+  --size-button: 2.5rem;
   --size-border: 0.25rem;
-  --size-thumbnail: 2.5rem;
-  --font-size: 1.125rem;
+  --size-thumbnail: 1.5rem;
+  --font-size: 0.875rem;
 
   /* animation */
-  --animation-duration: 250ms
+  --animation-duration: 250ms;
+
+  /* font */
+  --font: "Inter";
 }
 
 body {
@@ -27,14 +30,28 @@ body {
   justify-content: center;
   width: 100vw;
   height: 100vh;
+  gap: 2.5rem;
 }
-
+body::after {
+  content: "";
+  background-image: url(./img/background.jpg);
+  background-blend-mode: overlay;
+  background-size: cover;
+  opacity: 0.8%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
 button {
+  margin: 0;
+  padding: 0;
   background-color: transparent;
-  border: none;
+  border: 1px solid var(--color-black);
   outline: none;
   cursor: pointer;
-  transition: transform var(--animation-duration) ease;
 }
 
 * {
@@ -42,7 +59,8 @@ button {
   margin: 0;
 }
 
-ul,li {
+ul,
+li {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -54,57 +72,88 @@ ul,li {
   width: 8rem;
 }
 
-.btn {
-  margin-right: var(--base-space);
-}
-.btn:hover {
-  transform: scale(1.1);
-}
-
+/* button style sheet */
 .buttons {
   display: flex;
   align-items: center;
+  gap: 0.75rem;
 }
 
-.imgBtn {
-  width: var(--size-button);
-  height: var(--size-button);
-}
-
-.colorBtn {
-  font-size: var(--font-size);
-  padding: calc(var(--base-space) * 2);
-  border-radius: var(--size-border);
-}
-
-.blue {
-  background-color: var(--color-blue);
-}
-.yellow {
-  background-color: var(--color-yellow);
-}
-.pink {
-  background-color: var(--color-pink);
-}
-
-.items {
-  width: 60%;
-  height: 60%;
-  overflow-y: scroll;
-}
-.item {
-  background-color: var(--color-white);
-  border-radius: calc(var(--size-border) * 2);
+.btn {
   display: flex;
   align-items: center;
-  padding: var(--base-space);
-  margin: var(--base-space);
+  justify-content: center;
+  border-radius: 0 calc(var(--size-button) * 2) calc(var(--size-button) * 2) 0;
+  height: var(--size-button);
+  padding: var(--base-space) calc(var(--base-space) * 3);
+  text-transform: capitalize;
+  transition: background-color var(--animation-duration) ease;
 }
+
+.btn:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.btn.active {
+  background-color: var(--color-black);
+  border-radius: calc(var(--size-button) * 2);
+  color: var(--color-white);
+}
+.all {
+  border-radius: calc(var(--size-button) * 2);
+  padding: var(--base-space) calc(var(--base-space) * 1.5);
+}
+
+/* list style sheet */
+.items {
+  width: 60%;
+  max-height: 60%;
+  overflow-y: scroll;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--base-space);
+
+  @media (max-width: 1080px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-white);
+  border-radius: calc(var(--size-border) * 2);
+  padding: var(--base-space);
+  gap: calc(var(--base-space) * 2);
+}
+
 .item_thumbnail {
+  border-radius: var(--size-border);
+  padding: var(--base-space);
+}
+.item_thumbnail.pink {
+  background-color: var(--color-pink);
+}
+.item_thumbnail.blue {
+  background-color: var(--color-blue);
+}
+.item_thumbnail.yellow {
+  background-color: var(--color-yellow);
+}
+.item_thumbnail img {
   width: var(--size-thumbnail);
   height: var(--size-thumbnail);
 }
+
+.item_name {
+  flex-grow: 1;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-family: var(--font);
+}
 .item_desc {
-  margin-left: var(--base-space);
+  margin-right: var(--base-space);
   font-size: var(--font-size);
+  color: var(--color-light-grey);
 }

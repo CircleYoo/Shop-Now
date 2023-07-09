@@ -18,7 +18,10 @@
   function createHTMLString(obj) {
     return `
         <li class="item">
-          <img src="${obj.image}" alt="${obj.type}" class="item_thumbnail">
+          <div class="item_thumbnail ${obj.color}">
+            <img src="${obj.image}" alt="${obj.type}">
+          </div>
+          <span class="item_name">${obj.name}</span>
           <span class="item_desc">${obj.gender}, ${obj.size}</span>
         </li>
     `
@@ -29,11 +32,13 @@
     const target = event.target;
     const key = target.dataset.key;
     const value = target.dataset.value;
-    // console.log(target, key, value)
     if (key == null || value == null) {
       return;
     } 
     makeItem(items.filter(item => item[key] === value))
+    console.log(event.target)
+
+    // target.classList.toggle('active')
   }
 
   // filtering items
