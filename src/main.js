@@ -35,18 +35,33 @@
     if (key == null || value == null) {
       return;
     } 
-    makeItem(items.filter(item => item[key] === value))
-    console.log(event.target)
 
-    // target.classList.toggle('active')
+    const buttons = document.querySelector('.buttons');
+    console.log(target)
+
+    
+    makeItem(items.filter(item => item[key] === value))
+    // console.log(event)
+    // buttons.forEach(button => {
+    //   console.log(button)
+    //   if (button === target) {
+    //     button.classList.add('active')
+    //   } else {
+    //     button.classList.remove('active');
+    //   }
+    // })
+
   }
 
   // filtering items
   function setEventListner(items) {
     const all = document.querySelector('.all');
+
     const buttons = document.querySelector('.buttons');
     all.addEventListener('click', () => makeItem(items))
-    buttons.addEventListener('click', event => onButtonClick(event, items))
+    buttons.addEventListener('click', event => {
+      onButtonClick(event, items)
+    })
   }
   // main
   loadItems()

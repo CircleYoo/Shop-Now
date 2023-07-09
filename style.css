@@ -101,7 +101,6 @@ li {
   color: var(--color-white);
 }
 .all {
-  border-radius: calc(var(--size-button) * 2);
   padding: var(--base-space) calc(var(--base-space) * 1.5);
 }
 
