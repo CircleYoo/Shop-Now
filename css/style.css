@@ -95,7 +95,8 @@ li {
   height: var(--size-button);
   padding: var(--base-space) calc(var(--base-space) * 3);
   text-transform: capitalize;
-  transition: all var(--animation-duration) ease;
+  transition: background-color,
+    border-radius var(--animation-duration) ease-in-out;
 }
 
 .all {
@@ -108,7 +109,7 @@ li {
   color: var(--color-white);
 }
 
-.btn.active{
+.btn.active {
   background-color: var(--color-black);
   border-radius: calc(var(--size-button) * 2);
   color: var(--color-white);
@@ -126,6 +127,20 @@ li {
   @media (max-width: 1080px) {
     grid-template-columns: repeat(1, 1fr);
   }
+}
+
+.items::-webkit-scrollbar {
+  width: 16px;
+}
+.items::-webkit-scrollbar-track {
+  background-color: var(--color-beige);
+}
+.items::-webkit-scrollbar-thumb {
+  background-color: var(--color-light-grey);
+  border-left: 10px solid var(--color-beige);
+}
+.items::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-blue);
 }
 
 .item {
