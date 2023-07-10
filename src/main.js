@@ -36,11 +36,12 @@
       return;
     } 
 
-    const buttons = document.querySelector('.buttons');
-    console.log(target)
-
-    
+    const buttons = document.querySelectorAll('.btn')
+    console.log(buttons)
     makeItem(items.filter(item => item[key] === value))
+    if (target) {
+      target.classList.add('active')
+    } 
     // console.log(event)
     // buttons.forEach(button => {
     //   console.log(button)
@@ -56,7 +57,6 @@
   // filtering items
   function setEventListner(items) {
     const all = document.querySelector('.all');
-
     const buttons = document.querySelector('.buttons');
     all.addEventListener('click', () => makeItem(items))
     buttons.addEventListener('click', event => {
