@@ -32,33 +32,31 @@
     const target = event.target;
     const key = target.dataset.key;
     const value = target.dataset.value;
+    const buttons = document.querySelectorAll('.btn')
+    
+    // button class
+    buttons.forEach(button => {
+      if (button === target) {
+        button.classList.add('active')
+      } else {
+        button.classList.remove('active');
+      }
+    })
+
     if (key == null || value == null) {
       return;
     } 
-
-    const buttons = document.querySelectorAll('.btn')
-    console.log(buttons)
     makeItem(items.filter(item => item[key] === value))
-    if (target) {
-      target.classList.add('active')
-    } 
-    // console.log(event)
-    // buttons.forEach(button => {
-    //   console.log(button)
-    //   if (button === target) {
-    //     button.classList.add('active')
-    //   } else {
-    //     button.classList.remove('active');
-    //   }
-    // })
-
+    
   }
 
   // filtering items
-  function setEventListner(items) {
+  function setEventListener(items) {
     const all = document.querySelector('.all');
     const buttons = document.querySelector('.buttons');
-    all.addEventListener('click', () => makeItem(items))
+    all.addEventListener('click', () => {
+      makeItem(items)
+    })
     buttons.addEventListener('click', event => {
       onButtonClick(event, items)
     })
@@ -67,7 +65,7 @@
   loadItems()
     .then(items => {
       makeItem(items)
-      setEventListner(items);
+      setEventListener(items);
     })
     .catch(console.log);
   

@@ -129,6 +129,30 @@
       "image": "img/blue_t.png"
     },
     {
+      "name": "pink shirt",
+      "type": "tshirt",
+      "gender": "male",
+      "size": "medium",
+      "color": "pink",
+      "image": "img/pink_t.png"
+    },
+    {
+      "name": "blue dress",
+      "type": "dress",
+      "gender": "female",
+      "size": "large",
+      "color": "blue",
+      "image": "img/blue_d.png"
+    },
+    {
+      "name": "yellow dress",
+      "type": "dress",
+      "gender": "female",
+      "size": "small",
+      "color": "yellow",
+      "image": "img/yellow_d.png"
+    },
+    {
       "name": "pink pants",
       "type": "pants",
       "gender": "female",
