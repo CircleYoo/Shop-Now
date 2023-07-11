@@ -123,8 +123,10 @@ li {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--base-space);
+  transition: width var(--animation-duration) ease;
 
   @media (max-width: 1080px) {
+    width: 80%;
     grid-template-columns: repeat(1, 1fr);
   }
 }
