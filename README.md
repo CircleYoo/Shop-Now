@@ -1,4 +1,4 @@
-# Mini-Shopping
+# Shop Now
 바닐라 JS로 쇼핑몰 미니게임 만들기 <br/>
 **배포주소** : https://circleyoo.github.io/Mini-Shopping/ <br/>
 
